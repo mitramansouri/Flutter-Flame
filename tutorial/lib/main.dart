@@ -3,19 +3,24 @@ import 'dart:html';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:tutorial/components/player.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
 }
 
-class MyGame extends FlameGame {
-  SpriteComponent player = SpriteComponent();
 
+class MyGame extends FlameGame {
+  final Player _player = Player();
   @override 
   Future<void> onLoad() async{
-    player
-      ..sprite = await loadSprite('player.png')
-      ..size = Vector2(40.0, 40.0); //give size 
-    add(player);
+    add(_player);
+  }
+
+  @override 
+  void update(double dt) {
+    // TODO: implement update
+    super.update(dt);
+    _player.y +1 ;
   }
 }
